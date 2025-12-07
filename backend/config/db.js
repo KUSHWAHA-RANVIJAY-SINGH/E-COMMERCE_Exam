@@ -5,21 +5,27 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const mysqlPool = mysql.createPool({
-         host: process.env.DB_HOST || 'localhost',
-         user: process.env.DB_USER || 'root',
-         password: process.env.DB_PASSWORD,
-         database: process.env.DB_NAME || 'ecommerce_db'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || 'ecommerce_db',
+    port: 4000, // TiDB uses port 4000 (Localhost uses 3306)
+    ssl: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: true
+    },
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-// Quick test function to verify MySQL connectivity
+
 const testMySQLConnection = async () => {
          try {
-                  // A simple query to ensure the pool can perform queries
                   await mysqlPool.query('SELECT 1');
                   console.log('Connected to MySQL');
          } catch (err) {
                   console.error('MySQL connection error:', err);
-                  // Don't exit the process here; surface error to caller
                   throw err;
          }
 };
