@@ -26,15 +26,25 @@ export default function ProductsPage() {
     return `https://image.pollinations.ai/prompt/${encodeURIComponent(name)}?width=400&height=400&nologo=true`;
   };
 
+  const [error, setError] = useState('');
+
   useEffect(() => {
-    const timer = setTimeout(async () => {
+    // Moved fetch logic here
+    const fetchProducts = async () => {
       setLoading(true);
+      setError('');
       try {
         const { data } = await api.get(`/products?search=${filters.search}`);
         setProducts(data.products || []);
-      } catch (err) { showToast('Failed to load products', 'error'); }
+      } catch (err: any) {
+        console.error('Failed to load products:', err);
+        setError(err.message || 'Failed to load products');
+        showToast('Failed to load products. Check console.', 'error');
+      }
       setLoading(false);
-    }, 500);
+    };
+
+    const timer = setTimeout(fetchProducts, 500);
     return () => clearTimeout(timer);
   }, [filters, showToast]);
 
@@ -65,7 +75,13 @@ export default function ProductsPage() {
         </div>
 
         {/* Grid */}
-        {loading ? (
+        {error ? (
+          <div className="text-center py-20">
+            <div className="text-red-500 text-lg mb-2">Error loading products</div>
+            <p className="text-slate-500 text-sm">{error}</p>
+            <p className="text-xs text-slate-400 mt-4">Make sure backend is running and reachable.</p>
+          </div>
+        ) : loading ? (
           <div className="text-center py-20 text-slate-400 animate-pulse">Loading collection...</div>
         ) : products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -73,24 +89,30 @@ export default function ProductsPage() {
               <div key={product._id} className="bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col group">
 
                 {/* Dynamic Image Area */}
-                <div className="aspect-square bg-slate-100 relative overflow-hidden">
+                <div className="aspect-square bg-slate-100 relative overflow-hidden p-4">
                   <img
                     // This line creates an image based on the Product Name!
                     src={product.image || getDynamicImage(product.name)}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 mix-blend-multiply"
                     loading="lazy"
                     onError={(e) => {
                       // Fallback if the generator fails
                       e.currentTarget.src = "https://placehold.co/400x400/e2e8f0/1e293b?text=No+Image";
                     }}
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
                 </div>
 
                 <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-semibold text-slate-900 line-clamp-1">{product.name}</h3>
-                  <p className="text-xs text-slate-500 mb-3 capitalize">{product.category}</p>
+                  <div className="mb-2">
+                    <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">{product.sku}</p>
+                    <h3 className="font-semibold text-slate-900 line-clamp-1">{product.name}</h3>
+                  </div>
+
+                  <p className="text-sm text-slate-500 mb-4 line-clamp-2">{product.description || 'No description available.'}</p>
+
+                  <p className="text-xs text-slate-400 mb-3 capitalize bg-slate-100 w-fit px-2 py-1 rounded-full">{product.category}</p>
 
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-lg font-bold text-blue-600">

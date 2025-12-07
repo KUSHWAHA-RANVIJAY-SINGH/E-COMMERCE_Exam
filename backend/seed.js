@@ -9,26 +9,26 @@ dotenv.config();
 
 // Sample products data
 const sampleProducts = [
-  { sku: 'LAPTOP-001', name: 'Premium Laptop Pro 15', price: 1299.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80' },
-  { sku: 'PHONE-001', name: 'Smartphone X Ultra', price: 899.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80' },
-  { sku: 'HEADPHONE-001', name: 'Wireless Headphones Premium', price: 199.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80' },
-  { sku: 'WATCH-001', name: 'Smart Watch Series 5', price: 399.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80' },
-  { sku: 'TABLET-001', name: 'Tablet Pro 12.9', price: 799.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&q=80' },
-  { sku: 'CAMERA-001', name: 'DSLR Camera Professional', price: 1499.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80' },
-  { sku: 'SPEAKER-001', name: 'Bluetooth Speaker Max', price: 149.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80' },
-  { sku: 'KEYBOARD-001', name: 'Mechanical Keyboard RGB', price: 129.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1587829741301-dc798b91add1?w=500&q=80' },
-  { sku: 'MOUSE-001', name: 'Gaming Mouse Pro', price: 79.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80' },
-  { sku: 'MONITOR-001', name: '4K Monitor 27 inch', price: 449.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80' },
-  { sku: 'SHIRT-001', name: 'Cotton T-Shirt Premium', price: 29.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80' },
-  { sku: 'JEANS-001', name: 'Denim Jeans Classic', price: 59.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1542272617-08f086375082?w=500&q=80' },
-  { sku: 'SHOES-001', name: 'Running Shoes Pro', price: 89.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80' },
-  { sku: 'JACKET-001', name: 'Winter Jacket Warm', price: 149.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1551028919-3012aeb9d3e7?w=500&q=80' },
-  { sku: 'BAG-001', name: 'Backpack Travel', price: 69.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80' },
-  { sku: 'WALLET-001', name: 'Leather Wallet Premium', price: 49.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1627123424574-181ce90b594f?w=500&q=80' },
-  { sku: 'SUNGLASSES-001', name: 'Sunglasses UV Protection', price: 99.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80' },
-  { sku: 'BOOK-001', name: 'Programming Guide Advanced', price: 39.99, category: 'Books', image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80' },
-  { sku: 'BOOK-002', name: 'Design Patterns Explained', price: 44.99, category: 'Books', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&q=80' },
-  { sku: 'BOOK-003', name: 'Web Development Mastery', price: 49.99, category: 'Books', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80' }
+  { sku: 'LAPTOP-001', name: 'Premium Laptop Pro 15', description: 'Experience ultimate performance with our latest 15-inch laptop featuring a high-resolution display and all-day battery life.', price: 1299.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80' },
+  { sku: 'PHONE-001', name: 'Smartphone X Ultra', description: 'Stay connected with the Smartphone X Ultra. Stunning camera, blazing fast processor, and sleek design.', price: 899.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80' },
+  { sku: 'HEADPHONE-001', name: 'Wireless Headphones Premium', description: 'Immerse yourself in music with active noise cancellation and superior sound quality.', price: 199.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80' },
+  { sku: 'WATCH-001', name: 'Smart Watch Series 5', description: 'Track your fitness, heart rate, and notifications on the go with the stylish Series 5.', price: 399.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80' },
+  { sku: 'TABLET-001', name: 'Tablet Pro 12.9', description: 'Your creative studio on the go. Powerful chip, liquid retina display, and pencil support.', price: 799.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&q=80' },
+  { sku: 'CAMERA-001', name: 'DSLR Camera Professional', description: 'Capture life in stunning detail with this professional-grade DSLR camera.', price: 1499.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80' },
+  { sku: 'SPEAKER-001', name: 'Bluetooth Speaker Max', description: 'Portable sound that packs a punch. Waterproof and durable for any adventure.', price: 149.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80' },
+  { sku: 'KEYBOARD-001', name: 'Mechanical Keyboard RGB', description: 'Tactile mechanical switches with customizable RGB lighting for the ultimate gaming experience.', price: 129.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1587829741301-dc798b91add1?w=500&q=80' },
+  { sku: 'MOUSE-001', name: 'Gaming Mouse Pro', description: 'Precision sensor and ergonomic design for competitive gaming.', price: 79.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80' },
+  { sku: 'MONITOR-001', name: '4K Monitor 27 inch', description: 'Crystal clear 4K resolution with localized dimming for deep blacks and bright whites.', price: 449.99, category: 'Electronics', image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80' },
+  { sku: 'SHIRT-001', name: 'Cotton T-Shirt Premium', description: 'Soft, breathable organic cotton t-shirt for everyday comfort.', price: 29.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80' },
+  { sku: 'JEANS-001', name: 'Denim Jeans Classic', description: 'Timeless style and durability. Perfect fit for any occasion.', price: 59.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1542272617-08f086375082?w=500&q=80' },
+  { sku: 'SHOES-001', name: 'Running Shoes Pro', description: 'Engineered for speed and comfort. Lightweight design with superior cushioning.', price: 89.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80' },
+  { sku: 'JACKET-001', name: 'Winter Jacket Warm', description: 'Stay warm and stylish this winter with our insulated, water-resistant jacket.', price: 149.99, category: 'Clothing', image: 'https://images.unsplash.com/photo-1551028919-3012aeb9d3e7?w=500&q=80' },
+  { sku: 'BAG-001', name: 'Backpack Travel', description: 'Spacious and durable backpack with laptop compartment and anti-theft features.', price: 69.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80' },
+  { sku: 'WALLET-001', name: 'Leather Wallet Premium', description: 'Genuine leather wallet with plenty of card slots and a sleek profile.', price: 49.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1627123424574-181ce90b594f?w=500&q=80' },
+  { sku: 'SUNGLASSES-001', name: 'Sunglasses UV Protection', description: 'Protect your eyes in style with these polarized lenses offering 100% UV protection.', price: 99.99, category: 'Accessories', image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80' },
+  { sku: 'BOOK-001', name: 'Programming Guide Advanced', description: 'Master advanced programming concepts with this comprehensive guide.', price: 39.99, category: 'Books', image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80' },
+  { sku: 'BOOK-002', name: 'Design Patterns Explained', description: 'Learn how to write scalable and maintainable code with design patterns.', price: 44.99, category: 'Books', image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&q=80' },
+  { sku: 'BOOK-003', name: 'Web Development Mastery', description: 'From HTML to React, this book covers everything you need to become a web pro.', price: 49.99, category: 'Books', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80' }
 ];
 
 async function seedDatabase() {
